@@ -5,3 +5,4 @@
 - redux
 - react-redux
 - styled-Components
+- ![투두](https://user-images.githubusercontent.com/111102006/207259207-a115f413-f28d-44b0-8df6-ae7486bc3833.gif)
