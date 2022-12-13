@@ -28,7 +28,7 @@ function Opening() {
     useEffect(() => {
         setTimeout(() => {
         navigate('/main')
-        }, 2000)
+        }, 1500)
     }, [])
 
     return (

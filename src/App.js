@@ -2,13 +2,20 @@ import './App.css';
 import Opening from './pages/Opening';
 import Naming from './pages/Naming';
 import Main from './pages/Main';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 
 function App() {
-  const [isName, setIsName] = useState(false)
-  const [name, setName] = useState('')
+
+  const [isName, setIsName] = useState(() => JSON.parse(window.localStorage.getItem("isName")) || false)
+  const [name, setName] = useState(() => JSON.parse(window.localStorage.getItem("name")) || '')
+
+  useEffect(()=> {
+      window.localStorage.setItem("name", JSON.stringify(name));
+      window.localStorage.setItem("isName", JSON.stringify(isName));
+    }, [name, isName] )
 
 
   return (
@@ -22,11 +29,9 @@ function App() {
           <Route 
             path='/main' 
             element= {
-              isName ? (
-                <Main name={name}/>
-              ) : (
-                <Naming name={name} setName={setName} setIsName={setIsName}/>
-              )
+              isName ? 
+              (<Main name={name}/>) 
+              : (<Naming name={name} setName={setName} setIsName={setIsName}/>)
             }
           />
         </Routes>

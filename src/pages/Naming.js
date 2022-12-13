@@ -5,6 +5,19 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    position: relative;
+    animation: fadeInUp 1s;
+
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translate3d(0, 100%, 0);
+        }
+        to {
+            opacity: 1;
+            transform: translateZ(0);
+        }
+    }
 `
 
 function Naming( {setName, name, setIsName} ) {
@@ -22,6 +35,7 @@ function Naming( {setName, name, setIsName} ) {
     return (
         <Container>
             <span className='decorateSpan'>이름을 알려주세요.</span>
+            <label htmlFor='name'/>
             <input 
                 type='text' 
                 id='name'
